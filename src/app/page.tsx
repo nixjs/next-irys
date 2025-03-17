@@ -1,6 +1,7 @@
 'use client'
 
 import ConnectWalletButton from '@pkg/components/ConnectWalletButton'
+import UploadText from '@pkg/components/UploadText'
 import Image from 'next/image'
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
 
                 <div className='flex gap-4 items-center flex-col sm:flex-row'>
                     <ConnectWalletButton />
+                    <UploadText />
                 </div>
             </main>
             <footer className='row-start-3 flex gap-6 flex-wrap items-center justify-center'>
