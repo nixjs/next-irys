@@ -5,7 +5,7 @@ import BaseWebIrys from '@irys/web-upload/esm/base'
 import { useAppKitAccount, useAppKitNetwork } from '@reown/appkit/react'
 import { WebUploader } from '@irys/web-upload'
 import { sepolia, mainnet } from 'viem/chains'
-import { createWalletClient, createPublicClient, custom, Chain } from 'viem'
+import { createWalletClient, createPublicClient, custom, Chain, http } from 'viem'
 import { ViemV2Adapter } from '@irys/web-upload-ethereum-viem-v2'
 import { ContextState, IrysContext } from './useIrysUploader'
 import { ChainById, TransportByChainId } from '@pkg/config/wallet'
@@ -27,15 +27,15 @@ const IrysUploaderProvider = ({ children }: { children?: React.ReactNode }) => {
                 const fChainId = Number(chainId) as unknown as keyof typeof ChainById
                 const chain = (fChainId ? ChainById[fChainId] : isDev ? sepolia : mainnet) as Chain
 
-                const transport = isDesktop ? custom((window as any).ethereum) : TransportByChainId[fChainId]
+                // const transport = isDesktop ? custom((window as any).ethereum) : TransportByChainId[fChainId]
                 const provider = createWalletClient({
                     chain,
-                    transport,
+                    transport: http(),
                 })
 
                 const publicClient = createPublicClient({
                     chain,
-                    transport,
+                    transport: http(),
                 })
 
                 // const webUploader = constructableWebTokenFund
