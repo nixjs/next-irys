@@ -9,7 +9,7 @@ import { createWalletClient, createPublicClient, custom, Chain } from 'viem'
 import { ViemV2Adapter } from '@irys/web-upload-ethereum-viem-v2'
 import { ContextState, IrysContext } from './useIrysUploader'
 import { ChainById, TransportByChainId } from '@pkg/config/wallet'
-import WebEthereum from '@irys/web-upload-ethereum'
+import { WebUSDCEth } from '@irys/web-upload-ethereum'
 
 const mode = 'devnet'
 
@@ -42,7 +42,7 @@ const IrysUploaderProvider = ({ children }: { children?: React.ReactNode }) => {
                 //     ? IrysWebUploaderExtends[constructableWebTokenFund]
                 //     : IrysWebUploader[fChainId]
 
-                const irysUploader = await WebUploader(WebEthereum)
+                const irysUploader = await WebUploader(WebUSDCEth)
                     .withAdapter(
                         ViemV2Adapter(provider, {
                             publicClient,
